@@ -44,9 +44,9 @@ public class EmployeeController {
     }
 
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @PutMapping("/")
-    public Employee updateEmployee(@RequestBody Employee employee) {
-        return employeeService.updateEmployee(employee);
+    @PutMapping(path = "/{id}")
+    public Employee updateEmployee(@PathVariable("id") String id, @RequestBody Employee employee) {
+        return employeeService.updateEmployee(Integer.parseInt(id), employee);
     }
 
 }
