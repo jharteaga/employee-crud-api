@@ -1,6 +1,7 @@
 package com.example.employee.employeeapi.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.employee.employeeapi.model.entity.Employee;
 import com.example.employee.employeeapi.model.repository.EmployeeRepository;
@@ -19,6 +20,14 @@ public class EmployeeService {
     }
 
     public Employee createEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    public Optional<Employee> validateEmployeeCode(Integer id) {
+        return employeeRepository.findById(id);
+    }
+
+    public Employee updateEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
 
