@@ -3,8 +3,6 @@ package com.example.employee.employeeapi.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.websocket.server.PathParam;
-
 import com.example.employee.employeeapi.model.entity.Employee;
 import com.example.employee.employeeapi.service.EmployeeService;
 
@@ -52,9 +50,9 @@ public class EmployeeController {
 
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @DeleteMapping(path = "/{id}")
-    public boolean deleteEmployee(@PathVariable("id") String id, @RequestBody Employee employee) {
-        employeeService.deleteEmployee(Integer.parseInt(id), employee);
-        return true;
+    public String deleteEmployee(@PathVariable("id") String id) {
+        employeeService.deleteEmployee(Integer.parseInt(id));
+        return "succes";
     }
 
 }
