@@ -10,6 +10,7 @@ import com.example.employee.employeeapi.service.EmployeeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +48,13 @@ public class EmployeeController {
     @PutMapping(path = "/{id}")
     public Employee updateEmployee(@PathVariable("id") String id, @RequestBody Employee employee) {
         return employeeService.updateEmployee(Integer.parseInt(id), employee);
+    }
+
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @DeleteMapping(path = "/{id}")
+    public boolean deleteEmployee(@PathVariable("id") String id, @RequestBody Employee employee) {
+        employeeService.deleteEmployee(Integer.parseInt(id), employee);
+        return true;
     }
 
 }
